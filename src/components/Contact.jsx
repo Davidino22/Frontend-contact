@@ -31,32 +31,30 @@ export function Contact(props) {
   }
 
 
-  function submitValue(event) {
+  async function submitValue(event) {
     event.preventDefault();
-    fetch(`http://localhost:3000/api/contact/${id}`, {
-      method: 'PUT',
+
+    console.log(
+      contact.name, message, contact.email, id
+    )
+    const response = await fetch(`http://localhost:3000/api/contact/${id}`, {
+      mode: "cors",
+
+      method: "PUT",
       headers: {
         "Content-type": "application/json"
       },
       body: JSON.stringify({
         name: contact.name,
-        message: message,
-        email: contact.email
+        email: contact.email,
+        message
       }),
+
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    const data = await response.json()
+    console.log(data);
   }
+
 
 
 
