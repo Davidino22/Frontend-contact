@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import Table from './table';
+import Table from './Table';
 
 function Home() {
   const [errors, setErrors] = useState({})
