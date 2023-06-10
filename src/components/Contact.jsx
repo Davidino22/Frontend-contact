@@ -17,7 +17,7 @@ export function Contact(props) {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/contact/${id}`)
+    fetch(`${import.meta.env.VITE_URL}api/contact/${id}`)
       .then((response) => response.json())
 
       .then((data) => {
@@ -44,7 +44,7 @@ export function Contact(props) {
       console.log(
         contact.name, message, contact.email, id
       )
-      const response = await fetch(`http://localhost:3000/api/contact/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_URL}api/contact/${id}`, {
         mode: "cors",
 
         method: "PUT",
@@ -79,7 +79,7 @@ export function Contact(props) {
   async function deleteItem() {
     console.log('deleted')
 
-    const response = await fetch(`http://localhost:3000/api/contact/${id}`, {
+    const response = await fetch(`${import.meta.env.VITE_URL}api/contact/${id}`, {
       mode: "cors",
 
       method: "DELETE",

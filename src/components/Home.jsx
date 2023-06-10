@@ -18,7 +18,7 @@ function Home() {
   }, []);
 
   async function getcontacts() {
-    const contacts = await fetch("http://localhost:3000/api/contact")
+    const contacts = await fetch(`${import.meta.env.VITE_URL}api/contact`)
     const jsonData = await contacts.json();
     console.log(jsonData.contacts)
     setList(jsonData.contacts)
@@ -37,7 +37,7 @@ function Home() {
     console.log({
       name, email, message
     })
-    const response = await fetch("http://localhost:3000/api/contact", {
+    const response = await fetch(`${import.meta.env.VITE_URL}api/contact`, {
 
       method: "POST",
       headers: {
